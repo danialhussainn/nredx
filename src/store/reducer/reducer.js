@@ -1,5 +1,5 @@
 export  const reduc=(state=0,action)=>{
-    debugger
+    debugger;
      if(action.type=='INFO_PERSONAL'){
          return( {state,...action.payload })
         

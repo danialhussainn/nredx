@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Store, { store } from '../store/store'
-const Form = () => {
+import {connect} from 'react-redux'
+const Form = (props) => {
     const [state,setState]=useState({})
 const updatefunc=(e)=>{
     state[e.target.id]=e.target.value
@@ -13,6 +14,12 @@ const funclick=(e)=>{
 }
     return (
         <div>
+        {setTimeout(() => {
+             
+             console.log(props)
+         }, 5000)}
+            
+         {console.log(props)}
             <form action="/action_page.php">
   <label for="fname">First name:</label><br/>
   <input type="text" id="fname" name="fname" onChange={updatefunc}/><br/>
@@ -24,4 +31,10 @@ const funclick=(e)=>{
     );
 };
 
-export default Form;
+const mapStateToProps = (state) => {
+    return {
+      data:state
+    }
+  }
+  
+export default (connect(mapStateToProps)(Form));
